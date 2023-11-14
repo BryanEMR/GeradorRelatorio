@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orçamento</title>
+</head>
+
+<body style="margin: 0 auto; width: 1240px; background-color: #fff">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@700;800&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "Open Sans", sans-serif;
+    }
+  </style>
+
+  <div style="width: 1240px; height: 1550px">
+    {{{initialPage}}}
+  </div>
+
+  {{!-- Proxima pagina --}}
+
+
+  <div style=" max-width: 1240px; height: 1550px; display: flex; flex-direction: column;">
+    <div style="padding:  60px 100px">
+      <table style="border-collapse: collapse; width: 100%;">
+        <tr style=" border-bottom: 3px solid black;">
+          <th style="text-align: center; width: 20%;">NOME</th>
+          <th style="text-align: center; width: 20%;">SOBRENOME</th>
+          <th style="text-align: center; width: 20%;">CIDADE</th>
+          <th style="text-align: center; width: 20%;">SEXO</th>
+          <th style="text-align: center; width: 20%;">VALOR</th>
+        </tr>
+        {{{tabela}}}
+      </table>
+      <p>
+        {{valor}}
+      </p>
+    </div>
+    <div style="margin-top: auto">
+      <p>
+        Footer do pdf
+      </p>
+
+
+    </div>
+  </div>
+</body>
+
+</html>

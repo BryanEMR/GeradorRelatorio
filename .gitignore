@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+temp
+package-lock.json
+combined.log
+error.log
