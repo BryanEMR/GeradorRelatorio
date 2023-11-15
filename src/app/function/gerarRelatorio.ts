@@ -4,17 +4,23 @@ import { variablesHTMLForPDF } from "../jsonMokado/variaveisHTML";
 import puppeteer from "puppeteer";
 import * as Handlebars from "handlebars";
 import { IImportCSV } from "../interface/interface";
+import { calcularSaldoFinal } from "./calcularSaldo";
 
 export async function createOrcamentoPDF(
-  jsonCSV:IImportCSV[],
-  valor:string
+  jsonCSV: IImportCSV[],
+  valor: string
 ) {
+  // Puxa o arquivo de templete
   const hbsFile = resolve(__dirname, "..", "html", "relatorio.hbs");
-  // variables display false
+
+  // Puxa as variaveis que nominamos no templete para ser substituida por outro valor
   let variaveis: any[] = variablesHTMLForPDF.filter(
     (variable) => !variable.display
   );
-  variaveis = variaveis.map((variable) => {
+
+
+  //O Switch com variaveis a ser subistiruidas do templete
+  variaveis = variaveis.map(async (variable) => {
     switch (true) {
       case variable.variablesNames === "initialPage":
         let img = resolve(
@@ -32,31 +38,92 @@ export async function createOrcamentoPDF(
       case variable.variablesNames === "tabela":
         let html = ''
 
-        jsonCSV.forEach((infos: IImportCSV) => {
-          html += `
-          <tr style="background-color: #EEE;">
-            <td style=" border-right: 2px solid white; border-collapse: collapse; padding-left:15px ;">${infos.Nome} </td>
-            <td style=" border-right: 2px solid white; border-collapse: collapse; padding-left:15px ;">${infos.Sobrenome}</td>
-            <td style=" border-right: 2px solid white; border-collapse: collapse; padding-left:15px ;">${infos.Cidade}</td>
-            <td style=" border-collapse: collapse; padding-left:15px ;">${infos.Sexo}</td>
-            <td style=" border-collapse: collapse; padding-left:15px ;">${infos.valor}</td>
-          </tr>
-          `
-
-        });
+        for(let i = 0; i<7; i++){
+          switch(true){
+            case i === 0:
+              html += `
+              <tr>
+                <td style=" text-align: left; ">Receita bruta de vendas</td>
+                <td style=" "> </td>
+                <td style=" text-align: right;font-weight: bold ">${await calcularSaldoFinal(jsonCSV, ['3002'] )}</td>
+              </tr>
+              `
+            break
+            case i === 1:
+              html += `
+              <tr>
+                <td style=" text-align: left; ">Devoluções de vendas</td>
+                <td style=" "> </td>
+                <td style=" text-align: right;font-weight: bold ">${ await calcularSaldoFinal(jsonCSV, ['3017'] ) }</td>
+              </tr>
+              `
+            break
+            case i === 2:
+              html += `
+              <tr>
+                <td style=" text-align: left; ">ICMS</td>
+                <td style=" "> </td>
+                <td style=" text-align: right;font-weight: bold ">${await calcularSaldoFinal(jsonCSV, ['3022'] )}</td>
+              </tr>
+              `
+            break
+            case i === 3:
+              html += `
+              <tr>
+                <td style=" text-align: left; ">PIS </td>
+                <td style=" "> </td>
+                <td style=" text-align: right;font-weight: bold ">${await calcularSaldoFinal(jsonCSV, ['3023', '3026'] )}</td>
+              </tr>
+              `
+            break
+            case i === 4:
+              html += `
+              <tr>
+                <td style=" text-align: left; ">COFINS</td>
+                <td style=" "> </td>
+                <td style=" text-align: right;font-weight: bold ">${await calcularSaldoFinal(jsonCSV, ['3024', '3027'] )}</td>
+              </tr>
+              `
+            break
+            case i === 5:
+              html += `
+              <tr>
+                <td style=" text-align: left; font-weight: bold;">ISSQN</td>
+                <td style=" "> </td>
+                <td style=" text-align: right;font-weight: bold">${await calcularSaldoFinal(jsonCSV, ['3028'] )}</td>
+              </tr>
+              `
+            break
+            case i === 6:
+              html += `
+              <tr>
+                <td style=" text-align: left; font-weight: bold;">Receita Liquida</td>
+                <td style=" "> </td>
+                <td style=" text-align: right; margin-top:1px solid black;font-weight: bold">${await calcularSaldoFinal(jsonCSV, ['3001'] )}</td>
+              </tr>
+              `
+            break
+          }
+          
+        }
+          
+        console.log(html)
         return {
           ...variable,
           content: html,
         };
-        case variable.variablesNames === "valor":
-          return {
-            ...variable,
-            content: valor ,
-          };
+      case variable.variablesNames === "valor":
+        return {
+          ...variable,
+          content: valor,
+        };
       default:
         return variable;
     }
   });
+
+
+  //Apartir daqui seria funções a ser chamadas para não quebrar na hora de rederizar o pdf
 
   const titlesNotDisplay = variaveis.map(
     (object) => object.variablesNames
@@ -75,6 +142,8 @@ export async function createOrcamentoPDF(
     ...variablesNotDisplay
   };
 
+
+  console.log(variables)
   const readFile = readFileSync(hbsFile).toString("utf-8");
   const template = Handlebars.compile(readFile);
   const html = template(variables);

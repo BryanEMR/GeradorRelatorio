@@ -1,3 +1,5 @@
+//Json com o nome das variaveis a ser substituida do templete
+
 export const variablesHTMLForPDF = [
   {
     id: 1,
@@ -19,5 +21,5 @@ export const variablesHTMLForPDF = [
     title: "valor",
     variablesNames: "valor",
     content: ``,
-  },
+  }
 ];

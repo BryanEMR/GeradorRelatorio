@@ -4,12 +4,13 @@ import iconv from 'iconv-lite';
 import csv from "csvtojson";
 import { Readable } from "node:stream";
 import { createOrcamentoPDF } from "../function/gerarRelatorio";
+import { calcularSaldoFinal } from "../function/calcularSaldo";
 class controller{
    
     async uploadCSV(request: Request, response: Response) {
         try {
-          const {valor} = request.body
-          console.log('valor',valor)
+          const {valor1, valor2, valor3, valor4, valor5, valor6, valor7} = request.body
+          console.log('valor',valor1, valor2, valor3, valor4, valor5, valor6, valor7)
           const file: IFile | undefined = request.file;
           if (!file) {
             return response.status(400).send({
@@ -17,6 +18,7 @@ class controller{
             });
           }
           const { mimetype, buffer } = file;
+          
           if (mimetype !== "text/csv") {
             return response.status(500).send({
               message: "Para realizar a importação precisa ser um arquivo csv",
@@ -29,9 +31,12 @@ class controller{
     
             //let that = this;
             const valoresImportados: IImportCSV[] | null = await csv({
-              delimiter: ",",
+              delimiter: ";",
             }).fromStream(stream);
-            const respostaFuncao = await createOrcamentoPDF(valoresImportados, valor)
+
+            const teste = await calcularSaldoFinal(valoresImportados, ['3161','3260'] )
+
+            const respostaFuncao = await createOrcamentoPDF(valoresImportados, teste)
             return response.status(200).send({
               data: valoresImportados,
               funcao: respostaFuncao,
