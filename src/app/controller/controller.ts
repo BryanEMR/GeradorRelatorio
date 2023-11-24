@@ -36,7 +36,7 @@ class controller{
 
             const teste = await calcularSaldoFinal(valoresImportados, ['3161','3260'] )
 
-            const respostaFuncao = await createOrcamentoPDF(valoresImportados, teste)
+            const respostaFuncao = await createOrcamentoPDF(valoresImportados, valor1, valor2, valor3, valor4, valor5, valor6, valor7)
             return response.status(200).send({
               data: valoresImportados,
               funcao: respostaFuncao,

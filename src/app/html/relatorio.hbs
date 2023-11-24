@@ -35,7 +35,17 @@
 
   {{!-- Proxima pagina --}}
   <div style=" max-width: 1240px; height: 1550px; display: flex; flex-direction: column; font-size: 20px;">
-    <div style="padding:250px 13%">
+    <div style="padding:250px 13% 0px 13%">
+    </div>
+
+    <div style="margin-top: auto">
+    </div>
+  </div>
+
+  {{!-- Proxima pagina --}}
+  <div style=" max-width: 1240px; height: 1550px; display: flex; flex-direction: column; font-size: 18px;">
+
+    <div style="padding:200px 13% 20px 13%">
       <p style="font-weight: bold; text-align:left"> Receita líquida de vendas </p>
       <table style="border-collapse: collapse; width: 100%;">
         <tr style="">
@@ -43,60 +53,70 @@
           <th style="text-align: center; width: 33%;"></th>
           <th style="text-align: right; width: 33%; border-bottom: 1px solid black;">31/12/2022</th>
         </tr>
-        <tr>
-                <td style=" text-align: left; ">Receita bruta de vendas</td>
-                <td style=" "> </td>
-                <td style=" text-align: right;font-weight: bold ">R$ 192.988.121,83</td>
-              </tr>
-
-              <tr>
-                <td style=" text-align: left; ">Devoluções de vendas</td>
-                <td style=" "> </td>
-                <td style=" text-align: right;font-weight: bold ">R$ 776.899,78</td>
-              </tr>
-
-              <tr>
-                <td style=" text-align: left; ">ICMS</td>
-                <td style=" "> </td>
-                <td style=" text-align: right;font-weight: bold ">R$ 1.663.045,01</td>
-              </tr>
-
-              <tr>
-                <td style=" text-align: left; ">PIS </td>
-                <td style=" "> </td>
-                <td style=" text-align: right;font-weight: bold ">R$ 3.496,02</td>
-              </tr>
-
-              <tr>
-                <td style=" text-align: left; ">COFINS</td>
-                <td style=" "> </td>
-                <td style=" text-align: right;font-weight: bold ">R$ 16.102,45</td>
-              </tr>
-
-              <tr>
-                <td style=" text-align: left; font-weight: bold;">ISSQN</td>
-                <td style=" "> </td>
-                <td style=" text-align: right;font-weight: bold">R$ 19.403,75</td>
-              </tr>
-
-              <tr>
-                <td style=" text-align: left; font-weight: bold;">Receita Liquida</td>
-                <td style=" "> </td>
-                <td style=" text-align: right; margin-top:1px solid black;font-weight: bold">R$ 190.457.893,47</td>
-              </tr>
+        {{{tabela1}}}
       </table>
-      <p>
-        {{valor}}
+    </div>
+
+    <div style="padding:10px 10%">
+      <p style="font-weight: bold;"> 1. Despesas operacionais </p>
+    </div>
+
+    <div style="padding: 0px 13% 0px 11%">
+      <p style="">
+       &emsp; A Companhia optou por apresentar a demonstração do resultado consolidado por função. Conforme requerido pelo
+        CPC, apresenta, a seguir, o detalhamento da demonstração do resultado por natureza:
       </p>
     </div>
-    <div style="margin-top: auto">
-      <p>
-        Footer do pdf
-      </p>
 
-
+    <div style="padding:10px 11%">
+      <table style="border-collapse: collapse; width: 100%;">
+        <tr style="">
+          <th style="text-align: left; width: 33%;font-weight: bold;"> </th>
+          <th style="text-align: center; width: 33%;"></th>
+          <th style="text-align: right; width: 33%; border-bottom: 1px solid black;">31/12/2022</th>
+        </tr>
+        <tr style="">
+          <th style="text-align: left; width: 33%;font-weight: bold;">Despesas por função </th>
+          <th style="text-align: center; width: 33%;"></th>
+          <th style="text-align: right; width: 33%;"></th>
+        </tr>
+        {{{tabela2}}}
+        <tr style="">
+          <th style="text-align: left; width: 33%;font-weight: bold;">Despesas por natureza</th>
+          <th style="text-align: center; width: 33%;"></th>
+          <th style="text-align: right; width: 33%;"></th>
+        </tr>
+        {{{tabela3}}}
+      </table>
+    </div>
+    <div style="padding:0px 10% 10px 10%">
+      <p style="font-weight: bold;"> 2. Resultado financeiro líquido </p>
+    </div>
+    <div style="padding:10px 11%">
+      <table style="border-collapse: collapse; width: 100%;">
+        <tr style="">
+          <th style="text-align: left; width: 33%;font-weight: bold;"> </th>
+          <th style="text-align: center; width: 33%;"></th>
+          <th style="text-align: right; width: 33%; border-bottom: 1px solid black;">31/12/2022</th>
+        </tr>
+        <tr style="">
+          <th style="text-align: left; width: 33%;font-weight: bold;">Receitas financeiras:</th>
+          <th style="text-align: center; width: 33%;"></th>
+          <th style="text-align: right; width: 33%;"></th>
+        </tr>
+        {{{tabela4}}}
+        <tr style="">
+          <th style="text-align: left; width: 33%;font-weight: bold;">Despesas financeiras:</th>
+          <th style="text-align: center; width: 33%;"></th>
+          <th style="text-align: right; width: 33%;"></th>
+        </tr>
+        {{{tabela5}}}
+      </table>
     </div>
   </div>
+
+
+
 </body>
 
 </html>

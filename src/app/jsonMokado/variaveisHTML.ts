@@ -11,15 +11,36 @@ export const variablesHTMLForPDF = [
   {
     id: 2,
     display: false,
-    title: "tabela",
-    variablesNames: "tabela",
+    title: "tabela1",
+    variablesNames: "tabela1",
     content: ``,
   },
   {
     id: 3,
     display: false,
-    title: "valor",
-    variablesNames: "valor",
+    title: "tabela2",
+    variablesNames: "tabela2",
+    content: ``,
+  },
+  {
+    id: 4,
+    display: false,
+    title: "tabela3",
+    variablesNames: "tabela3",
+    content: ``,
+  },
+  {
+    id: 3,
+    display: false,
+    title: "tabela2",
+    variablesNames: "tabela4",
+    content: ``,
+  },
+  {
+    id: 4,
+    display: false,
+    title: "tabela3",
+    variablesNames: "tabela5",
     content: ``,
   }
 ];
