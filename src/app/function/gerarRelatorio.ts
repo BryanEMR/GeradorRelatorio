@@ -271,7 +271,6 @@ export async function createOrcamentoPDF(
           ...variable,
           content: html,
         };
-
       case variable.variablesNames === "tabela4":
         html = ''
         for (let i = 0; i < 5; i++) {
@@ -393,6 +392,41 @@ export async function createOrcamentoPDF(
         return {
           ...variable,
           content: html,
+        };
+      case variable.variablesNames === "conta3000":
+        return {
+          ...variable,
+          content: `${await calcularSaldoFinal(jsonCSV, ['3000'])}`,
+        };
+        case variable.variablesNames === "valor6":
+        return {
+          ...variable,
+          content: `${valor6}`,
+        };
+        case variable.variablesNames === "valor5":
+        return {
+          ...variable,
+          content: `${valor5}`,
+        };
+        case variable.variablesNames === "valor4":
+        return {
+          ...variable,
+          content: `${valor4}`,
+        };
+        case variable.variablesNames === "valor3":
+        return {
+          ...variable,
+          content: `${valor3}`,
+        };
+        case variable.variablesNames === "valor2":
+        return {
+          ...variable,
+          content: `${valor2}`,
+        };
+        case variable.variablesNames === "valor1":
+        return {
+          ...variable,
+          content: `${valor1}`,
         };
       default:
         return variable;
