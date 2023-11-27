@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/botao-de-energia.png">
+    <title>Projeto Integrador</title>
+</head>
+
+<body>
+    <header class="navegacao">
+        <a href="">
+            <h1>Logo</h1>
+        </a>
+        <ul>
+            <li><a href="#">Cadastrar</a></li>
+            <li><a href="#">Entrar</a></li>
+            <li><a href="#">Sair</a></li>
+        </ul>
+    </header>
+    <div style="width: 60%; height:80%; margin-left: 35%;margin-right: 35%;">
+        <main class="formulario">
+            <form method="post" action="http://localhost:3001/gerarRelatorio/CSV" enctype="multipart/form-data">
+                <label name="valor1" class="labell">Almento de preco: </label>
+                <input type="text" style="width: 150px;" min="0.00" step="0.01" class="numero">
+                <br><br>
+                <label name="valor2" class="labell">Imposto de Renda: </label>
+                <input type="text" style="width: 150px;" min="0.00" step="0.01" class="numero">
+                <br><br>
+                <label name="valor3" class="labell">Lucro liquido do execicio: </label>
+                <input type="text" style="width: 150px;" min="0.00" step="0.01" class="numero">
+                <br><br>
+                <label name="valor4" class="labell">Lucro liquido por acao: </label>
+                <input type="text" style="width: 150px;" min="0.00" step="0.01" class="numero">
+                <br><br>
+                <label name="valor5" class="labell">Almento de preco: </label>
+                <input type="text" style="width: 150px;" min="0.00" step="0.01" class="numero">
+                <br><br>
+                <label name="valor6" class="labell">Almento de preco: </label>
+                <input type="text" style="width: 150px;" min="0.00" step="0.01" class="numero">
+                <br><br>
+                <label name="valor7" class="labell">Almento de preco: </label>
+                <input type="text" style="width: 150px;" min="0.00" step="0.01" class="numero">
+                <br><br>
+                <input type="file" name="file" id="" style="text-align: center;">
+                <br><br><br>
+                <input type="submit" class="botao" value="Gerar PDF">
+
+            </form>
+        </main>
+    </div>
+
+    <footer>
+        <p>Direitos reservados</p>
+    </footer>
+
+</body>
+
+</html>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+
+        background-color: rgb(43, 39, 39);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .navegacao {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 100px;
+        background-color: rgb(6, 121, 121);
+        align-items: center;
+    }
+
+    .navegacao a {
+        text-decoration: none;
+    }
+
+    .navegacao a h1 {
+        color: aliceblue;
+
+
+
+    }
+
+    .navegacao ul {
+        display: flex;
+        gap: 10px;
+    }
+
+    .navegacao ul li {
+        list-style: none;
+    }
+
+    .navegacao ul li a {
+        text-decoration: none;
+        padding: 5px 20px;
+        color: aliceblue;
+
+    }
+
+    .formulario {
+        padding: 30px 100px;
+        color: aliceblue;
+
+    }
+
+    .labell {
+        width: 200px;
+        float: left;
+        display: block;
+    }
+
+    main {
+        height: 76vh;
+    }
+
+    footer {
+
+        background-color: rgb(6, 121, 121);
+    }
+
+    footer p {
+        padding: 15px;
+        color: aliceblue;
+
+    }
+
+    main form .botao {
+        background-color: rgb(6, 121, 121);
+        width: 100px;
+        height: 50px;
+        border-radius: 5px;
+        color: aliceblue;
+    }
+
+    .numero {
+        font-size: 20px;
+    }
+</style>

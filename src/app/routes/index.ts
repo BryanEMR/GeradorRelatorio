@@ -5,7 +5,7 @@ const routs = Router()
 
 //Routes
 routs.get("/",(req, res) => {
-    res.send('Olá mundo, Bem-vindo ao Back!')
+  res.sendFile("../src/app/front")
   })
 
 export default routs ;
